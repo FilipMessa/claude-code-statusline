@@ -17,6 +17,10 @@ Opus 5.5 | ███░░░░░ 42% | ⧗ 12 min | 73%↑ 1:47 | my-project 
 | `📁 scratch` | Claude's scratchpad for this session, only when it has files |
 | `ⓘ /sl-legend` | Reminder that typing `/sl-legend` in Claude Code prints this table in the terminal |
 
+![The status line changing as a session progresses](demo/demo.gif)
+
+_The animation runs the real `statusline.sh` on made-up session data._
+
 ## Install: let Claude Code do it
 
 You do not need to edit anything by hand. Open Claude Code in any folder and paste this prompt:
@@ -35,6 +39,10 @@ Set up the Claude Code status line from https://github.com/FilipMessa/claude-cod
 ```
 
 Claude Code will ask permission for each step.
+
+![What happens when you paste the prompt into Claude Code](demo/setup.gif)
+
+_An illustration of the flow, not a live recording._
 
 ## Install: manually
 
@@ -82,6 +90,15 @@ export STATUSLINE_PROJECTS_DIR="$HOME/code"
 ```
 
 If you change a segment, update `commands/sl-legend.md` too so the legend stays accurate.
+
+## Re-recording the animations
+
+The GIFs in `demo/` are made with [VHS](https://github.com/charmbracelet/vhs) (`brew install vhs`). From the repository root:
+
+```bash
+vhs demo/demo.tape
+vhs demo/setup.tape
+```
 
 ## How it works
 
