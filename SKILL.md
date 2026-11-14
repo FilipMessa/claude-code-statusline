@@ -1,5 +1,6 @@
 ---
 name: claude-code-statusline
+disable-model-invocation: true
 description: Install, update, customize, or explain FilipMessa's Claude Code status line and /sl-legend command.
 ---
 
