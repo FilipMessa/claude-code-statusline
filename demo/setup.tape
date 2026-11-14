@@ -2,10 +2,14 @@
 Output demo/setup.gif
 
 Set Shell "bash"
-Set FontSize 16
-Set Width 1200
-Set Height 360
-Set Padding 20
+Set FontSize 18
+Set Width 1300
+Set Height 600
+Set Padding 24
+Set Margin 36
+Set MarginFill "#181825"
+Set BorderRadius 14
+Set WindowBar Colorful
 Set Theme "Catppuccin Mocha"
 Set TypingSpeed 0
 
