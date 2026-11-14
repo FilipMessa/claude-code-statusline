@@ -21,24 +21,45 @@ Opus 5.5 | ███░░░░░ 42% | ⧗ 12 min | 73%↑ 1:47 | my-project 
 
 _The animation runs the real `statusline.sh` on made-up session data._
 
-## Install: let Claude Code do it
+## Install: Claude Code skill
 
-You do not need to edit anything by hand. Open Claude Code in any folder and paste this prompt:
+The included [skill](SKILL.md) lets Claude Code install, update, customize, and explain this status line. Install the skill once:
 
-```text
-Set up the Claude Code status line from https://github.com/FilipMessa/claude-code-statusline for me.
-
-1. Make sure `jq` is installed. If it is not, tell me how to install it for my system, or install it if I agree.
-2. Download `statusline.sh` from that repository into `~/.claude/`, and `commands/sl-legend.md` into `~/.claude/commands/` (create the folder if missing).
-3. Run `chmod +x ~/.claude/statusline.sh`.
-4. Open `~/.claude/settings.json` (create it if missing, keep all my existing settings) and add:
-   "statusLine": { "type": "command", "command": "~/.claude/statusline.sh", "refreshInterval": 30 }
-   If I already have a `statusLine`, show me the old value and ask before replacing it.
-5. Test the script by piping sample JSON into it, and show me the output.
-6. Tell me to restart Claude Code, then type `/sl-legend` to see what each part of the status line means.
+```bash
+git clone https://github.com/FilipMessa/claude-code-statusline.git
+cd claude-code-statusline
+mkdir -p ~/.agents/skills/claude-code-statusline ~/.claude/skills
+cp SKILL.md ~/.agents/skills/claude-code-statusline/SKILL.md
+ln -s ~/.agents/skills/claude-code-statusline ~/.claude/skills/claude-code-statusline
 ```
 
-Claude Code will ask permission for each step.
+If you already cloned the repository, use that checkout. If the skill folder or Claude symlink already exists, inspect it before replacing anything; an existing symlink to the shared folder can stay in place.
+
+Start a new Claude Code session, then run:
+
+```text
+/claude-code-statusline Install the status line for me.
+```
+
+Installing the skill makes the instructions available; invoking it with the request above installs the status line itself. The skill preserves unrelated settings, checks for conflicting configuration and local customizations, and tests the script with sample session data.
+
+You can also ask:
+
+```text
+/claude-code-statusline Make the context bar 12 cells wide.
+/claude-code-statusline Explain the segments in my status line.
+```
+
+The shared skill lives in `~/.agents/skills`, with a symlink for Claude in `~/.claude/skills`.
+
+## Install: let Claude Code do it
+
+For a one-off setup without installing the skill, paste this into Claude Code:
+
+```text
+Read SKILL.md at https://github.com/FilipMessa/claude-code-statusline
+and follow its installation workflow to set up the status line for me.
+```
 
 ![What happens when you paste the prompt into Claude Code](demo/setup.gif)
 
